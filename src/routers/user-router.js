@@ -1,5 +1,9 @@
 import Router from 'koa-router';
 import userController from '../controllers/user-controller'
-routes = new Router()
 
-routes.post('/signup', userController.create)
+const router = new Router()
+
+router.post('/signup', userController.create)
+
+
+export default router.routes()

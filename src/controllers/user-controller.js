@@ -1,15 +1,17 @@
-import userModel from '../database/models/user-model'
+import User from '../database/models/user-model'
 import bcrypt from 'bcrypt'
 
-export const create = (ctx) => {
-  const { body } = ctx
+export const create = async (ctx) => {
+  const body = ctx.body
 
-  return userModel.create({
+  console.log(body)
+
+  const user = await User.create({
     email: body.email,
     password: bcrypt.hash(body.password, 8),
     nickname: body.nickname
   })
-
+  return user
 }
 
 
